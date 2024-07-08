@@ -18,6 +18,7 @@ public class RobotContainer {
   public RobotContainer() {
     configureBindings();
   }
+  
 
   private void configureBindings() {
     m_dt.setDefaultCommand(new RunCommand(() -> m_dt.arcadeDrive(m_XboxController.getLeftY(), m_XboxController.getRightX()), m_dt));
@@ -27,8 +28,9 @@ public class RobotContainer {
     m_XboxController.x().whileTrue(m_arm.moveArm(180));
     m_XboxController.a().whileTrue(m_arm.moveArm(135));
     m_XboxController.b().whileTrue(m_arm.moveArm(90));
-    m_XboxController.y().whileTrue(m_arm.moveArm(45));
+    m_XboxController.y().whileTrue(m_dt.turnRobotCommand(90));
   }
+
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
